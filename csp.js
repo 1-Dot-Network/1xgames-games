@@ -2,10 +2,6 @@ fetch("https://raw.githubusercontent.com/1-Dot-Network/backend-stuff/main/Domain
     .then(response => response.text())
     .then(data => {
         var allowedDomains = data.split("\n");
-        var currentDomain = document.referrer;
-        if (allowedDomains.indexOf(currentDomain) !== -1) {
-            // Allow embedding
-        } else {
-            // Prevent embedding
-        }
+        var csp = "Content-Security-Policy: frame-ancestors 'self' " + allowedDomains.join(" ");
+        document.querySelector("meta[http-equiv='Content-Security-Policy']").content = csp;
     });
