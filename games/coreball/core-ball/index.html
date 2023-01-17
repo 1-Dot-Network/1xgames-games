@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        fetch("https://raw.githubusercontent.com/1-Dot-Network/backend-stuff/main/api1.js")
-          .then(response => response.text())
-          .then(data => {
-            var script = document.createElement("script");
-            script.innerHTML = data;
-            document.head.appendChild(script);
-          });
-      });
-      
+    fetch("https://raw.githubusercontent.com/1-Dot-Network/backend-stuff/main/Domain.js")
+    .then(response => response.text())
+    .then(data => {
+        var allowedDomains = data.split("\n");
+        var currentDomain = document.referrer;
+        if (allowedDomains.indexOf(currentDomain) !== -1) {
+            // Allow embedding
+        } else {
+            // Prevent embedding
+        }
+    });
           </script>
         <script type="text/javascript">
           (function(c,l,a,r,i,t,y){
